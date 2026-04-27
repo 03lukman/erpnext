@@ -1,0 +1,13 @@
+# Environment variables
+.env
+.env.*
+
+# Backup / file sementara
+*.zip
+*.tar
+*.tar.gz
+
+# Editor / OS
+.DS_Store
+.vscode/
+
