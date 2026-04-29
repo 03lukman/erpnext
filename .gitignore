@@ -11,3 +11,10 @@
 .DS_Store
 .vscode/
 
+# key
+private-key.pem
+digital-certificate.txt
+
+# Editor swap files
+*.swp
+*.*.swp
