@@ -1,6 +1,6 @@
 services:
   backend:
-    image: frappe/erpnext:v15.19.1
+    image: frappe/erpnext:${ERP_VERSION}
     restart: unless-stopped
     volumes:
       - sites:/home/frappe/frappe-bench/sites
@@ -10,7 +10,7 @@ services:
       - net-caddy
 
   configurator:
-    image: frappe/erpnext:v15.19.1
+    image: frappe/erpnext:${ERP_VERSION}
     entrypoint:
       - bash
       - -c
@@ -36,7 +36,7 @@ services:
   # PERHATIAN: Jalankan service ini hanya saat pertama kali install site.
   # Jika site sudah ada, service ini bisa di-comment atau dibiarkan (akan error/skip jika site sudah ada).
   create-site:
-    image: frappe/erpnext:v15.19.1
+    image: frappe/erpnext:${ERP_VERSION}
     volumes:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
@@ -83,7 +83,7 @@ services:
       - db-data:/var/lib/mysql
 
   frontend:
-    image: frappe/erpnext:v15.19.1
+    image: frappe/erpnext:${ERP_VERSION}
     depends_on:
       - websocket
       - backend
@@ -106,7 +106,7 @@ services:
       - "8085:8080"
 
   queue-long:
-    image: frappe/erpnext:v15.19.1
+    image: frappe/erpnext:${ERP_VERSION}
     restart: unless-stopped
     command:
       - bench
@@ -118,7 +118,7 @@ services:
       - logs:/home/frappe/frappe-bench/logs
 
   queue-short:
-    image: frappe/erpnext:v15.19.1
+    image: frappe/erpnext:${ERP_VERSION}
     restart: unless-stopped
     command:
       - bench
@@ -142,7 +142,7 @@ services:
       - redis-cache-data:/data
 
   scheduler:
-    image: frappe/erpnext:v15.19.1
+    image: frappe/erpnext:${ERP_VERSION}
     restart: unless-stopped
     command:
       - bench
@@ -152,7 +152,7 @@ services:
       - logs:/home/frappe/frappe-bench/logs
 
   websocket:
-    image: frappe/erpnext:v15.19.1
+    image: frappe/erpnext:${ERP_VERSION}
     restart: unless-stopped
     command:
       - node
@@ -163,10 +163,27 @@ services:
 
 volumes:
   db-data:
+    external: true
+    name: erp_db-data
   redis-queue-data:
+    external: true
+    name: erp_redis-queue-data
   redis-cache-data:
+    external: true
+    name: erp_redis-cache-data
   sites:
+    external: true
+    name: erp_sites
   logs:
+    external: true
+    name: erp_logs
+
+#volumes:
+#  db-data:
+#  redis-queue-data:
+#  redis-cache-data:
+#  sites:
+#  logs:
 
 networks:
   default:
