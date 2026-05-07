@@ -1,17 +1,16 @@
-# Database Settings
-DB_HOST=
-DB_PORT=
-MYSQL_ROOT_PASSWORD=
+COMPOSE_PROJECT_NAME=erp-kedua
+ERP_VERSION=v16
+MARIADB_VERSION=10.6
 
-# Redis Settings
-REDIS_CACHE=
-REDIS_QUEUE=
+DB_HOST=db
+DB_PORT=3306
+MYSQL_ROOT_PASSWORD=password_anda
+ADMIN_PASSWORD=password_anda
 
-# Site Settings
-SOCKETIO_PORT=
-FRAPPE_SITE_NAME_HEADER=
-UPSTREAM_REAL_IP_ADDRESS=
+# WAJIB SAMA dengan nama service di YAML
+REDIS_CACHE=redis-cache-2:6379
+REDIS_QUEUE=redis-queue-2:6379
 
-# Database Setting: Buat password database yang kuat.
-# Redis settings: Masukan setup redis
-# Site Settings: Sesuaikan dengan port server
+SOCKETIO_PORT=9000
+FRAPPE_SITE_NAME_HEADER=site2.domain.com
+UPSTREAM_REAL_IP_ADDRESS=127.0.0.1
