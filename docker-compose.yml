@@ -1,4 +1,7 @@
 services:
+  # =========================================================================
+  # BACKEND: Menjalankan aplikasi utama Frappe/ERPNext
+  # =========================================================================
   backend:
     image: frappe/erpnext:${ERP_VERSION}
     restart: unless-stopped
@@ -9,11 +12,12 @@ services:
       - default
       - net-caddy
 
+  # =========================================================================
+  # CONFIGURATOR: Mengatur konfigurasi global aplikasi
+  # =========================================================================
   configurator:
     image: frappe/erpnext:${ERP_VERSION}
-    entrypoint:
-      - bash
-      - -c
+    entrypoint: [bash, -c]
     command:
       - >
         ls -1 apps > sites/apps.txt;
@@ -33,36 +37,38 @@ services:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
 
-  # PERHATIAN: Jalankan service ini hanya saat pertama kali install site.
-  # Jika site sudah ada, service ini bisa di-comment atau dibiarkan (akan error/skip jika site sudah ada).
+  # =========================================================================
+  # CREATE-SITE: Inisialisasi Database & Migrate (Logika IF-ELSE)
+  # =========================================================================
   create-site:
     image: frappe/erpnext:${ERP_VERSION}
     volumes:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
-    entrypoint:
-      - bash
-      - -c
+    entrypoint: [bash, -c]
     command:
       - >
         wait-for-it -t 120 db:3306;
         wait-for-it -t 120 redis-cache:6379;
         wait-for-it -t 120 redis-queue:6379;
-        export start=`date +%s`;
-        until [[ -n `grep -hs ^ sites/common_site_config.json | jq -r ".db_host // empty"` ]] && \
-          [[ -n `grep -hs ^ sites/common_site_config.json | jq -r ".redis_cache // empty"` ]] && \
-          [[ -n `grep -hs ^ sites/common_site_config.json | jq -r ".redis_queue // empty"` ]];
-        do
-          echo "Waiting for sites/common_site_config.json to be created";
-          sleep 5;
-          if (( `date +%s`-start > 120 )); then
-            echo "could not find sites/common_site_config.json with required keys";
-            exit 1
-          fi
-        done;
-        echo "sites/common_site_config.json found";
-        bench new-site --no-mariadb-socket --admin-password=${ADMIN_PASSWORD} --db-root-password=${MYSQL_ROOT_PASSWORD} --install-app erpnext --set-default frontend;
 
+        # Cek apakah folder site sudah ada
+        if [ -d "sites/${SITE_NAME}" ]; then
+          echo "Site '${SITE_NAME}' ditemukan. Menjalankan migrate...";
+          bench --site ${SITE_NAME} migrate;
+        else
+          echo "Membuat site baru: ${SITE_NAME}...";
+          bench new-site ${SITE_NAME} \
+            --no-mariadb-socket \
+            --admin-password=${ADMIN_PASSWORD} \
+            --db-root-password=${MYSQL_ROOT_PASSWORD} \
+            --install-app erpnext \
+            --set-default;
+        fi
+
+  # =========================================================================
+  # DB: Database MariaDB
+  # =========================================================================
   db:
     image: mariadb:${MARIADB_VERSION}
     restart: unless-stopped
@@ -82,21 +88,20 @@ services:
     volumes:
       - db-data:/var/lib/mysql
 
+  # =========================================================================
+  # FRONTEND: Nginx Proxy untuk melayani file statis
+  # =========================================================================
   frontend:
     image: frappe/erpnext:${ERP_VERSION}
-    depends_on:
-      - websocket
-      - backend
+    depends_on: [websocket, backend]
     restart: unless-stopped
-    command:
-      - nginx-entrypoint.sh
+    command: [nginx-entrypoint.sh]
     environment:
       BACKEND: backend:8000
       FRAPPE_SITE_NAME_HEADER: ${FRAPPE_SITE_NAME_HEADER}
       SOCKETIO: websocket:9000
       UPSTREAM_REAL_IP_ADDRESS: ${UPSTREAM_REAL_IP_ADDRESS}
       UPSTREAM_REAL_IP_HEADER: X-Forwarded-For
-      UPSTREAM_REAL_IP_RECURSIVE: "off"
       PROXY_READ_TIMEOUT: 120
       CLIENT_MAX_BODY_SIZE: 50m
     volumes:
@@ -104,15 +109,17 @@ services:
       - logs:/home/frappe/frappe-bench/logs
     ports:
       - "8085:8080"
+    networks:
+      - default
+      - net-caddy
 
+  # =========================================================================
+  # WORKERS, REDIS, SCHEDULER & WEBSOCKET
+  # =========================================================================
   queue-long:
     image: frappe/erpnext:${ERP_VERSION}
     restart: unless-stopped
-    command:
-      - bench
-      - worker
-      - --queue
-      - long,default,short
+    command: ["bench", "worker", "--queue", "long,default,short"]
     volumes:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
@@ -120,11 +127,7 @@ services:
   queue-short:
     image: frappe/erpnext:${ERP_VERSION}
     restart: unless-stopped
-    command:
-      - bench
-      - worker
-      - --queue
-      - short,default
+    command: ["bench", "worker", "--queue", "short,default"]
     volumes:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
@@ -132,21 +135,17 @@ services:
   redis-queue:
     image: redis:6.2-alpine
     restart: unless-stopped
-    volumes:
-      - redis-queue-data:/data
+    volumes: [redis-queue-data:/data]
 
   redis-cache:
     image: redis:6.2-alpine
     restart: unless-stopped
-    volumes:
-      - redis-cache-data:/data
+    volumes: [redis-cache-data:/data]
 
   scheduler:
     image: frappe/erpnext:${ERP_VERSION}
     restart: unless-stopped
-    command:
-      - bench
-      - schedule
+    command: [bench, schedule]
     volumes:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
@@ -154,29 +153,10 @@ services:
   websocket:
     image: frappe/erpnext:${ERP_VERSION}
     restart: unless-stopped
-    command:
-      - node
-      - /home/frappe/frappe-bench/apps/frappe/socketio.js
+    command: [node, /home/frappe/frappe-bench/apps/frappe/socketio.js]
     volumes:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
-
-#volumes:
-#  db-data:
-#    external: true
-#    name: erp_db-data
-#  redis-queue-data:
-#    external: true
-#    name: erp_redis-queue-data
-#  redis-cache-data:
-#    external: true
-#    name: erp_redis-cache-data
-#  sites:
-#    external: true
-#    name: erp_sites
-#  logs:
-#    external: true
-#    name: erp_logs
 
 volumes:
   db-data:
