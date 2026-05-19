@@ -1,4 +1,4 @@
-# 🌐 Dokumentasi Infrastruktur & Manajemen ERPNext v16
+# Dokumentasi Instalasi & Konfigurasi ERPNext v16
 
 Repositori ini memuat panduan lengkap mengenai proses instalasi server, konfigurasi modul bisnis, integrasi sistem, hingga manajemen hak akses pada aplikasi ERPNext menggunakan Docker.
 
