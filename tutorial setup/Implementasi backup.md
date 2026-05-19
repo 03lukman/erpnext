@@ -1,0 +1,36 @@
+
+Hapus volume yang rusak saat ini dengan menggunakan perintah sebagai berikut
+```
+docker compose down -v
+```
+
+Jalankan kembali
+```
+docker compose up
+```
+
+Salin file dari backup ke kontainer tujuan
+```
+docker exec -u 0 -it dev-erp-backend-1 mkdir -p /home/frappe/frappe-bench/sites/frontend/private/backups/
+```
+
+```
+docker cp /opt/stacks/erp/backup-updatev16/. dev-erp-backend-1:/home/frappe/frappe-bench/sites/frontend/private/backups/
+```
+
+Perbaiki hak akses
+```
+docker exec -u 0 -it dev-erp-backend-1 chown -R frappe:frappe /home/frappe/frappe-bench/sites/frontend/private/backups/
+```
+### Restore data
+```
+docker exec -it dev-erp-backend-1 bench --site frontend restore \ /home/frappe/frappe-bench/sites/frontend/private/backups/20260507_155714-frontend-database.sql.gz \ --with-public-files /home/frappe/frappe-bench/sites/frontend/private/backups/20260507_155714-frontend-files.tar \ --with-private-files /home/frappe/frappe-bench/sites/frontend/private/backups/20260507_155714-frontend-private-files.tar
+```
+### Jalankan ini untuk melakukan backup
+```
+docker exec -it erp-backend-1 bench --site frontend migrate
+```
+### Restart 
+```
+docker compose restart
+```
