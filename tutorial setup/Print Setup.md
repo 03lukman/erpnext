@@ -1,4 +1,4 @@
-### print Setup
+## print Setup
 
 Untuk menghubungkan printer dengan aplikasi erpnext, kita bisa mencoba dan melihat dari artikel berikut:
 
