@@ -1,3 +1,6 @@
+## Setup Series for transaction
+
+
 Untuk setup series, silahkan masuk ke halaman administrator, kemudian masuk ke fitur search dan cari document naming settings (pastikan setup halaman aplikasi anda berbahasa inggris)
 
 [[gambar/Pasted%20image%2020260504162542.png]]
