@@ -11,8 +11,8 @@ Panduan inisialisasi server, konfigurasi `docker-compose.yml`, dan proses deploy
 ### 📂 Tahap 2: Konfigurasi Aplikasi
 Panduan setup email, integrasi Keycloak, dan konfigurasi penamaan seri transaksi.
 * [📄 1. Integrasi Keycloak](tutorial%20setup/Integrasi%20Keycloak.md)
-* [📄 2. Setup Permission Account](tutorial%20setup/Setup%20permission%20account.md)
-* [📄 3. Setup Email Default](tutorial%20setup/Setup%20Email%20Default.md)
+* [📄 2. Setup Email Default](tutorial%20setup/Setup%20Email%20Default.md)
+* [📄 3. Setup Permission Account](tutorial%20setup/Setup%20permission%20account.md)
 
 
 ### 🔒 Tahap 3: Konfigurasi Fitur
