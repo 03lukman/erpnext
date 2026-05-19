@@ -10,11 +10,11 @@ https://login.ad.agson.co.id/
 
 Saat sudah login, masuk ke manage realms, dan pilih agson
 
-[[gambar//Keycloak_realms.png]]
+[[gambar/Keycloak_realms.png]]
 
 Kemudian, klik menu clients dan create client seperti pada gambar dibawah:
 
-![[Create client_general setting.png]]
+[[gambar/Create%20client_general%20setting.png]]
 
 Untuk general setting, silahkan isi dengan
 - Client type: Silahkan gunakan OpenID Connect
