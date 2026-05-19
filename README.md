@@ -8,16 +8,17 @@ Repositori ini memuat panduan lengkap mengenai proses instalasi server, konfigur
 Panduan inisialisasi server, konfigurasi `docker-compose.yml`, dan proses deployment kontainer ERPNext.
 * [📄 1. Instalasi ERPNext on Docker](tutorial%20setup/Instalasi%20ERPNext%20on%20Docker.md)
 
-### 📂 Tahap 2: Konfigurasi Bisnis & Integrasi
+### 📂 Tahap 2: Konfigurasi Aplikasi
 Panduan setup email, integrasi Keycloak, dan konfigurasi penamaan seri transaksi.
-* [📄 2. Integrasi Keycloak](tutorial%20setup/Integrasi%20Keycloak.md)
+* [📄 1. Integrasi Keycloak](tutorial%20setup/Integrasi%20Keycloak.md)
+* [📄 2. Setup Permission Account](tutorial%20setup/Setup%20permission%20account.md)
 * [📄 3. Setup Email Default](tutorial%20setup/Setup%20Email%20Default.md)
-* [📄 4. Setup Series for Transaction](tutorial%20setup/Setup%20series%20for%20transaction.md)
 
-### 🔒 Tahap 3: Manajemen Keamanan & Kustomisasi
+
+### 🔒 Tahap 3: Konfigurasi Fitur
 Panduan manajemen izin akses pengguna, pengaturan hak akses akun, dan kustomisasi format cetakan (Print).
-* [📄 5. Setup Permission Account](tutorial%20setup/Setup%20permission%20account.md)
-* [📄 6. Print Setup](tutorial%20setup/Print%20Setup.md)
+* [📄 1. Print Setup](tutorial%20setup/Print%20Setup.md)
+* [📄 2. Setup Series for Transaction](tutorial%20setup/Setup%20series%20for%20transaction.md)
 
 
 ### 📚 Implementasi Backup Volume
