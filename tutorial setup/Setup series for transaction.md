@@ -1,14 +1,14 @@
 Untuk setup series, silahkan masuk ke halaman administrator, kemudian masuk ke fitur search dan cari document naming settings (pastikan setup halaman aplikasi anda berbahasa inggris)
 
-![[Pasted image 20260504162542.png]]
+[[gambar/Pasted%20image%2020260504162542.png]]
 
 Kemudian, setelah itu masuk kedalam menu nya dan select transactions, dan pilih transaksi yang ingin di custom series nya
 
-![[Pasted image 20260504162727.png]]
+[[Pasted%20image%2020260504162727.png]]
 
 Selanjutnya, isi series list for transaction dengan template series transaksi yang sesuai dengan modul perusahaaan
 
-![[Pasted image 20260504162759.png]]
+[[Pasted%20image%2020260504162759.png]]
 
 
 Berikut adalah contoh template series journal entry PT. Nashua Nusantara
@@ -37,14 +37,14 @@ JU-AI.YY..MM.-.###
 
 Setelah itu, coba anda masuk ke modul journal entry list, dan testing untuk tugas yang sudah kita kerjakan sebelumnya
 
-![[Pasted image 20260504162912.png]]
+[[gambar/Pasted%20image%2020260504162912.png]]
 
 Uji coba dalam modul journal entry, dan pilih kolom series
 
-![[Pasted image 20260504162931.png]]
+[[gambar/Pasted%20image%2020260504162931.png]]
 
 Setelah di save, langkah terakhir silahkan anda dapat melihat series journal entry sudah sesuai dengan template yang kita masukan sebelumnya
 
-![[output journal entry setup NN.png]]
+[[gambar/output%20journal%20entry%20setup%20NN.png]]
 
 
