@@ -10,7 +10,7 @@ https://login.ad.agson.co.id/
 
 Saat sudah login, masuk ke manage realms, dan pilih agson
 
-![[0.png]]
+[[gambar//Keycloak_realms.png]]
 
 Kemudian, klik menu clients dan create client seperti pada gambar dibawah:
 
