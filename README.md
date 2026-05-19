@@ -6,7 +6,7 @@ Repositori ini memuat panduan lengkap mengenai proses instalasi server, konfigur
 
 ### 🚀 Tahap 1: Deployment & Instalasi
 * *Panduan inisialisasi server, konfigurasi `docker-compose.yml`, dan proses deployment kontainer ERPNext.*
-* [📄 1. Instalasi ERPNext on Docker](tutorial%20setup/Instalasi%20ERPN%20on%20Docker.md)
+* [📄 1. Instalasi ERPNext on Docker](tutorial%20setup/Instalasi%20ERPNext%20on%20Docker.md)
 
 ### 📂 Tahap 2: Konfigurasi Bisnis & Integrasi
 * *Panduan setup email, integrasi Keycloak (SSO), dan konfigurasi penamaan seri transaksi.*
