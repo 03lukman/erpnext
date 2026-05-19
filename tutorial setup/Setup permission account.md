@@ -1,3 +1,5 @@
+### Setup Permission Account
+
 Untuk setup permission account, silahkan masuk ke halaman administrator, kemudian masuk ke fitur search dan cari user list (pastikan setup halaman aplikasi anda berbahasa inggris)
 
 [[gambar/erp_search.png]]
