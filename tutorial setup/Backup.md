@@ -18,6 +18,6 @@ docker exec -it erp-backend-1 cat sites/frontend/site_config.json | jq -r '.encr
 ```
 
 Cek isi folder
-![[Pasted image 20260507161608.png]]
+[[gambar/Pasted%20image%2020260507161608.png]]
 
 Setelah muncul data tersebut, maka saat ini file backup berhasil dibuat
