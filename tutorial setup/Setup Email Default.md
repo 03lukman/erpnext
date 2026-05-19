@@ -1,6 +1,6 @@
 Untuk setup email default, silahkan masuk ke halaman administrator, kemudian masuk ke fitur search dan cari email account list (pastikan setup halaman aplikasi anda berbahasa inggris)
 
-[[gambar/erp_email%20account%20list search.png]]
+[[gambar/erp_email%20account%20list%20search.png]]
 
 Setelah masuk, silahkan pilih email account yang akan di setup
 
