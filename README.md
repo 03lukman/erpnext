@@ -19,8 +19,12 @@ Panduan manajemen izin akses pengguna, pengaturan hak akses akun, dan kustomisas
 * [📄 5. Setup Permission Account](tutorial%20setup/Setup%20permission%20account.md)
 * [📄 6. Print Setup](tutorial%20setup/Print%20Setup.md)
 
----
 
+### 📚 Implementasi Backup Volume
+Panduan untuk backup volume
+* [📄 1. Backup Volume](tutorial%20setup/Backup.md)
+* [📄 2. Implementasi Backup](tutorial%20setup/Implementasi%20backup.md)
+---
 ### 📚 Sumber Referensi
 Kumpulan artikel dan sumber pembelajaran untuk pengembangan ERPNext lebih lanjut.
 * [📄 Sumber Artikel Pembelajaran](tutorial%20setup/Sumber%20artikel%20pembelajaran.md)
