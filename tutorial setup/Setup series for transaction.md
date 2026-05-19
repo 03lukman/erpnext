@@ -4,11 +4,11 @@ Untuk setup series, silahkan masuk ke halaman administrator, kemudian masuk ke f
 
 Kemudian, setelah itu masuk kedalam menu nya dan select transactions, dan pilih transaksi yang ingin di custom series nya
 
-[[Pasted%20image%2020260504162727.png]]
+[[gambar/Pasted%20image%2020260504162727.png]]
 
 Selanjutnya, isi series list for transaction dengan template series transaksi yang sesuai dengan modul perusahaaan
 
-[[Pasted%20image%2020260504162759.png]]
+[[gambar/Pasted%20image%2020260504162759.png]]
 
 
 Berikut adalah contoh template series journal entry PT. Nashua Nusantara
