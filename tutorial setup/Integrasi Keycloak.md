@@ -24,7 +24,7 @@ Kemudian, untuk tahap selanjutnya adalah setting Capability config, dengan menga
 - Client authentication menjadi status ON
 - Authentication flow ( checklist di bagian Standard flow & Direct access grants), kemudian klik tombol Next 
 
-![[Create client_capability config.png]]
+[[gambar/Create%20client_capability%20config.png]]
 
 Selanjutnya, tahapan login setting:
 - Root URL : isi dengan root URL aplikasi yang sudah di daftarkan di docker caddy
