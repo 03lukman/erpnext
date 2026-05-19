@@ -169,7 +169,7 @@ https://erp.ad.agson.co.id
 
 Jika instalasi berhasil, maka akan menampilkan halaman seperti pada gambar berikut:
 
-![[erp login Administrator.png]]
+![Halaman Login ERPNext](gambar/erp_login_administrator.png)
 
 Selanjutnya, untuk tutorial cara setup awal aplikasi erpnext bisa dilihat pada link berikut:
 ```
