@@ -29,22 +29,22 @@ Kemudian, untuk tahap selanjutnya adalah setting Capability config, dengan menga
 Selanjutnya, tahapan login setting:
 - Root URL : isi dengan root URL aplikasi yang sudah di daftarkan di docker caddy
 
-![[Create client_login settings.png]]
+[[gambar/Create%20client_login%20settings.png]]
 
 Setelah clients berhasil dibuat, selanjutnya klik menu credentials untuk copy dan simpan client secret
 
-![[keycloak_client secret.png]]
+[[gambar/keycloak_client%20secret.png]]
 
 ### 2. Menghubungkan KeyCloak ke ERPNext
 
 Masuk aplikasi erpnext dengan role administrator, kemudian cari menu **Social Login Key List**
 
-![[erp_sosial login.png]]
+[[gambar/erp_sosial%20login.png]]
 
 Langkah selanjutnya, buat New Social Login Key dan masukkan konfigurasi Custom dengan mengikuti detail parameter yang tertera pada gambar berikut:
 
-![[erp_sosial login key setup.png]]
-![[erp_sosial login setup.png]]
+[[gambar/erp_sosial%20login%20key%20setup.png]]
+[[gambar/erp_sosial%20login%20setup.png]]
 
 Pastikan nilai pada Base URL, Client ID, dan Redirect URL disesuaikan dengan realm yang sudah dibuat pada keycloak anda sebelumnya. dan untuk konfigurasi lainnya sebagai berikut:
 
@@ -74,14 +74,14 @@ https://erp.ad.agson.co.id
 
 Jika instalasi berhasil, maka akan menampilkan halaman seperti pada gambar berikut:
 
-![[erp_login with keycloak.png]]
+[[gambar/erp_login%20with%20keycloak.png]]
 
 Silahkan anda klik tombol Login with Login Agson, dan masukan username dan password sesuai dengan akun windows kantor anda.
 
-![[erp_login keycloak.png]]
+[[gambar/erp_login%20keycloak.png]]
 
 Kemudian, jika berhasil maka akan menampilkan halaman akun erpnext anda, setelah ini silahkan hubungi admin atau administrator untuk meminta akses aplikasi.
 
-![[erp_login user1.png]]
+[[gambar/erp_login%20user1.png]]
 
 Dengan ini, maka aplikasi erpnext telah berhasil terinstall pada komputer anda. Jika anda memiliki error pada langkah-langkah diatas, silahkan hubungi tim IT.
